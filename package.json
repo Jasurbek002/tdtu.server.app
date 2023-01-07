@@ -1,0 +1,31 @@
+{
+  "name": "oman.server.app",
+  "version": "1.0.0",
+  "description": "this is oman application server sytems",
+  "main": "index.js",
+  "scripts": {
+    "start": "./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasurbek002/tdtu.server.app.git"
+  },
+  "author": "Jasurbek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jasurbek002/oman.server.app/issues"
+  },
+  "homepage": "https://github.com/Jasurbek002/oman.server.app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0"
+  }
+}
