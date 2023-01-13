@@ -12,8 +12,14 @@ const PUTADMIN = `
 update admins SET password = crypt($1,gen_salt('bf')) 
 where admin_id = $2 returning *
 `
+
+const GETDELETE = `
+delete from admins where
+admin_id = $1 returning *
+`
 module.exports = {
     GETLOGIN,
     GETREGISTER,
-    PUTADMIN
+    PUTADMIN,
+    GETDELETE
 }

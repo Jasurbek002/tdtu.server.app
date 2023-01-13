@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 
 const cors = require('cors')
 const appRouter = require('./modules/index.js')
@@ -8,6 +9,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(checkToken)
+app.use(express.static(path.join(__dirname,'./uploads')))
+
 app.use(appRouter)
 
 

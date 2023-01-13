@@ -8,8 +8,9 @@ module.exports = (req,res,next) =>{
         }
         let {token} = req.headers
         if(token){
-            let {status} = verify(token)
-             if(status === 'admin' || status === 'supperAdmin'){
+            let {level} = verify(token)
+            
+             if(level === 'admin' || level === 'supperAdmin'){
                 return next()
              }else {
                 return next( new ForbiddinError (403,'your are not admin'))

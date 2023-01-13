@@ -1,6 +1,6 @@
 const model = require('./model.js')
 const {sign} = require('./../../lib/jwt.js')
-const { InternalServerError, ForbiddinError } = require('../../utils/error.js')
+const { InternalServerError, ForbiddinError, NotFoundError } = require('../../utils/error.js')
 
 
 
@@ -55,11 +55,16 @@ const PUT = async (req,res,next) =>{
                 message:'updated password',
                 data:putAdmin
             })
-        }else{
-          return next( new ForbiddinError(403,putAdmin))
         }
     } catch (error) {
-        return next(new InternalServerError(500,error.message))
+        if(error.status === 403){
+            return next( new ForbiddinError(403,putAdmin))
+        }
+        if(error.status === 404){
+            return next( new NotFoundError(404,error.message))
+        }
+        return next(new InternalServerError(error.status,error.message))
+       
     }
 }
 
@@ -73,16 +78,18 @@ const DELETE = async (req,res,next) =>{
                 message:'deleted admin!',
                 data:deleteAdmin
             })
-         }else{
-            res.status()
          }
     } catch (error) {
-        
+        if(error.status === 403){
+            return next(new ForbiddinError(403,error.message))
+        }
+        return next(new InternalServerError(500,error.message))
     }
 }
 
 module.exports = {
   LOGIN,
   REGISTER,
-  PUT
+  PUT,
+  DELETE
 }

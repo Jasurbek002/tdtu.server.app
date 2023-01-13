@@ -33,11 +33,28 @@ class InternalServerError extends Error {
         this.message = message
     }
 }
+class NotFoundError extends Error{
+    constructor(status,message){
+        super()
+        this.name = 'NotFoundError',
+        this.status = status,
+        this.message = message
+    }
+}
 
+class MyError extends Error {
+    constructor(status,message){
+        super()
+        this.status = status,
+        this.message = message
+    }
+}
 
 module.exports = {
     AutolizatsaError,
     ValidationError,
     ForbiddinError,
-    InternalServerError
+    InternalServerError,
+    NotFoundError,
+    MyError
 }
