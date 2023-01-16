@@ -1,40 +1,42 @@
+const { InternalServerError, NotFoundError } = require('../../utils/error.js')
 const model = require('./model.js')
-const uploadFile = require('../../lib/multer.js').single('newsImg')
-const {InternalServerError, NotFoundError} = require('./../../utils/error.js')
-const fs = require('fs')
-const path = require('path')
+const fileUpload = require('./../../lib/multer.js').single('logo')
 
-async function GET(req,res,next){
+const path = require('path')
+const fs = require('fs')
+
+async function GET (req,res,next){
     try {
-        let news = await model.GET()
-        if(news){
+        let partners = await model.GET()
+        if(partners){
             res.status(200).json({
                 status:200,
                 message:'successfuly!',
-                data:news
+                data:partners
             })
         }
     } catch (error) {
         if(error.status === 404){
-            return next( new NotFoundError(error.status,error.message))
+            return next(new NotFoundError(error.status,error.message))
         }
-        return next( new InternalServerError(500,error.message))
+        return next(new InternalServerError(500,error.message))
     }
 }
 
+
 async function POST(req,res,next){
     try {
-        let postNews = await model.POST(req.body,req.file)
-        if(postNews){
+        let postData = await model.POST(req.body,req.file)
+        if(postData){
             res.status(200).json({
                 status:200,
-                message:'news add successfuly!',
-                data:postNews
+                message:'Successfuly added!',
+                data:postData
             })
         }
     } catch (error) {
         if(error.status === 404){
-            return next( new NotFoundError(error.status,error.message))
+            return next(new NotFoundError(error.status,error.message))
         }
         return next(new InternalServerError(500,error.message))
     }
@@ -42,17 +44,18 @@ async function POST(req,res,next){
 
 async function PUT(req,res,next){
     try {
-        let putNews = await model.PUT(req.params,req.body,req.file)
-        if(putNews){
+        let putData = await model.PUT(req.file,req.body,req.params)
+        if(putData){
             fs.unlinkSync(path.join('src','uploads',req.body.deleteImage))
             res.status(200).json({
                 status:200,
-                message:'news successfuly updated!'
+                message:'successfuly updated',
+                data:putData
             })
         }
     } catch (error) {
         if(error.status === 404){
-            return next( new NotFoundError(error.status,error.message))
+            return next(new NotFoundError(error.status,error.message))
         }
         return next(new InternalServerError(500,error.message))
     }
@@ -60,18 +63,18 @@ async function PUT(req,res,next){
 
 async function DELETE(req,res,next){
     try {
-        let deleteNews = await model.DELETE(req.params)
-        if(deleteNews){
+        let putData = await model.DELETE(req.params)
+        if(putData){
             fs.unlinkSync(path.join('src','uploads',req.body.deleteImage))
             res.status(200).json({
                 status:200,
-                message:'news deleted successfuly',
-                data:deleteNews
+                message:'successfuly deleted',
+                data:putData
             })
         }
     } catch (error) {
-        if(error.status === 404){
-            return next( new NotFoundError(error.status,error.message))
+         if(error.status === 404){
+            return next(new NotFoundError(error.status,error.message))
         }
         return next(new InternalServerError(500,error.message))
     }
@@ -83,5 +86,5 @@ module.exports = {
     POST,
     PUT,
     DELETE,
-    uploadFile
+    fileUpload
 }

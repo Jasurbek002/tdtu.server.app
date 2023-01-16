@@ -41,7 +41,7 @@ create table loyha(
     thema_en text not null,
     author_uz varchar(50) not null,
     dedline varchar(20) not null,
-    tip varchar(30) not null
+    status varchar(30) not null
 );
 
 drop table if exists form;

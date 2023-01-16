@@ -1,6 +1,6 @@
 const {fetchAll,fetch} = require('./../../lib/postgres.js')
 const { MyError } = require('../../utils/error.js')
-const {GETDATA, POSTDATA, PUTDATA, DELETEDATA} = require('./query.js')    
+const {GETDATA, POSTDATA, OLDDATA,PUTDATA, DELETEDATA} = require('./query.js')    
 
 const GET = async () =>{
     try {
@@ -28,9 +28,18 @@ const POST = async ({titleuz,titleen,textuz,texten},{filename}) =>{
     }
 }
 
-const PUT = async ({newsId},{filename}) =>{
+const PUT = async ({newsId},{titleuz,titleen,textuz,texten},{filename}) =>{
     try {
-        let putNews = await fetch(PUTDATA,filename,newsId)
+        let oldNews = await fetch(OLDDATA,newsId)
+        
+        let putNews = await fetch(
+            PUTDATA,
+            filename ? filename : oldNews.image,
+            titleuz ? titleuz : oldNews.title_uz,
+            titleen ? titleen : oldNews.title_en,
+            textuz ? textuz : oldNews.text_uz,
+            texten ? texten : oldNews.text_en,
+            newsId)
         if(putNews){
             return putNews
         }else{

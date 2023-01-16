@@ -41,7 +41,7 @@ create table loyha(
     thema_en text not null,
     author_uz varchar(50) not null,
     dedline varchar(20) not null,
-    tip varchar(30) not null
+    status varchar(30) not null
 );
 
 drop table if exists form;
@@ -59,8 +59,9 @@ create table economy(
 drop table if exists spin;
 create table spin(
     spin_id serial primary key,
+    name_uz varchar(100) not null,
     name_en varchar(100) not null,
     text_uz text not null,
     text_en text not null,
-    responsible varchar(100) not null
+    responsible varchar(100) not null; 
 );
