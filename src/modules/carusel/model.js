@@ -16,10 +16,9 @@ async function GET(){
     }
 }
 
-async function POST({filename}){
-    console.log(filename)
+async function POST({filename},{titleuz,titleen,textuz,texten}){
     try {
-        let postData = await fetch(POSTDATA,filename)
+        let postData = await fetch(POSTDATA,filename,titleuz,titleen,textuz,texten)
         if(postData){
             return postData
         }else{

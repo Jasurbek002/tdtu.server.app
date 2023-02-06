@@ -21,9 +21,9 @@ async function GET(req,res,next){
     }
 }
 
-async function POST(req,res,next) {
+async function POST(req,res,next){
 try {
-    let postData = await model.POST(req.file)
+    let postData = await model.POST(req.file,req.body)
     if(postData){
         res.status(200).json({
             status:200,

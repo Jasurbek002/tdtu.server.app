@@ -4,8 +4,8 @@ SELECT * from banners
 `
 
 const POSTDATA = `
-insert into banners(image) 
-values($1) returning *
+insert into banners(image,title_uz,title_en,text_uz,text_en) 
+values($1,$2,$3,$4,$5) returning *
 `
 
 const PUTDATA = `

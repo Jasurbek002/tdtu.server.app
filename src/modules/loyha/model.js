@@ -1,6 +1,6 @@
 const { fetchAll, fetch } = require('../../lib/postgres.js')
 const { MyError } = require('../../utils/error.js')
-const {} = require('./query.js')
+const {GETLOYHA,POSTLOYHA,OLDLOYHA,PUTLOYHA,DELETELOYHA} = require('./query.js')
 
 async function GET(){
     try {
@@ -21,7 +21,7 @@ async function POST({themauz,themaen,author,dedline,tip}){
         if(postLoyha){
             return postLoyha
         }else{
-            throw new MyError(404,'loyha added!')
+            throw new MyError(404,'Something went wrong!')
         }
     } catch (error) {
         throw error

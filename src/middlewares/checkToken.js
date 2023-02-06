@@ -6,6 +6,9 @@ module.exports = (req,res,next) =>{
         if(req.url ==='/login' || req.url ==='/register'){
             return next()
         }
+        if(req.method === 'get'){
+         return next()
+        }
         let {token} = req.headers
         if(token){
             let {level} = verify(token)

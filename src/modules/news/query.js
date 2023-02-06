@@ -25,12 +25,16 @@ const DELETEDATA = `
 delete from news where new_id = $1
 returning *
 `
-
+const ONENEWS = `
+select * from news 
+where new_id = $1
+`
 
 module.exports = {
     GETDATA,
     POSTDATA,
     OLDDATA,
     PUTDATA,
-    DELETEDATA
+    DELETEDATA,
+    ONENEWS
 }

@@ -4,7 +4,26 @@ const {InternalServerError, NotFoundError} = require('./../../utils/error.js')
 const fs = require('fs')
 const path = require('path')
 
+const GET_ONE = async (req,res,next) =>{
+try {
+    let oneNews = await model.GET_ONE(req.params)
+    if(oneNews){
+        res.status(200).json({
+            status:200,
+            message:'ok',
+            data:oneNews
+        })
+    }
+} catch (error) {
+    if(error.status === 404){
+        return next(new NotFoundError(error.status,error.message))
+    }
+    return next(new InternalServerError(500,error.message))
+}
+}
+
 async function GET(req,res,next){
+    console.log('ok');
     try {
         let news = await model.GET()
         if(news){
@@ -83,5 +102,6 @@ module.exports = {
     POST,
     PUT,
     DELETE,
-    uploadFile
+    uploadFile,
+    GET_ONE
 }

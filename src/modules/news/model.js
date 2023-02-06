@@ -1,6 +1,19 @@
 const {fetchAll,fetch} = require('./../../lib/postgres.js')
 const { MyError } = require('../../utils/error.js')
-const {GETDATA, POSTDATA, OLDDATA,PUTDATA, DELETEDATA} = require('./query.js')    
+const {GETDATA, POSTDATA, OLDDATA,PUTDATA, DELETEDATA,ONENEWS} = require('./query.js')    
+
+const GET_ONE = async ({newsId}) =>{
+    try {
+        let newsOne = await fetch(ONENEWS,newsId)
+        if(newsOne){
+            return newsOne
+        }else{
+            throw new MyError(404,'news not found!')
+        }
+    } catch (error) {
+        throw error
+    }
+}
 
 const GET = async () =>{
     try {
@@ -67,5 +80,6 @@ module.exports = {
     GET,
     POST,
     PUT,
-    DELETE
+    DELETE,
+    GET_ONE
 }

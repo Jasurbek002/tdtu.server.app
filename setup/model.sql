@@ -14,7 +14,11 @@ create table admins(
 drop table if exists banners;
 create table banners(
     banner_id serial primary key,
-    image text not null
+    image text not null,
+    title_uz varchar(1000) not null,
+    title_en varchar(1000) not null,
+    text_uz varchar(1200) not null,
+    text_en varchar(1200) not null
 );
 
 drop table if exists news;
