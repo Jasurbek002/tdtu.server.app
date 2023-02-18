@@ -68,3 +68,12 @@ create table spin(
     text_en text not null,
     responsible varchar(100) not null
 );
+
+
+drop table if exists docs;
+create table docs(
+    doc_id serial primary key,
+    full_name varchar(150) not null,
+    special varchar(100) not null,
+    job text not null
+);

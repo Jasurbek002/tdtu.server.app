@@ -58,6 +58,22 @@ async function MAGISTER(req,res,next){
         return next(new InternalServerError(500,error.message))
     }
 }
+async function SCIENCE(req,res,next){
+    try { 
+        let file =path.join(process.cwd(),'src','pdfs','science.pdf')
+        res.status(200).download(file)
+    } catch (error) {
+        return next(new InternalServerError(500,error.message))
+    }
+}
+async function STUDENTS(req,res,next){
+    try { 
+        let file =path.join(process.cwd(),'src','pdfs','students.pdf')
+        res.status(200).download(file)
+    } catch (error) {
+        return next(new InternalServerError(500,error.message))
+    }
+}
 module.exports = {
     TECHNIZOM,
     TECHKENGASH,
@@ -65,5 +81,7 @@ module.exports = {
     GIDRO,
     MAGISTER,
     PREZDENT,
-    ATOQLI
+    ATOQLI,
+    SCIENCE,
+    STUDENTS
 }

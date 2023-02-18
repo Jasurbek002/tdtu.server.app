@@ -8,6 +8,9 @@ router.get('/download/prezdent',controller.PREZDENT);
 router.get('/download/gidro',controller.GIDRO);
 router.get('/download/magister',controller.MAGISTER);
 router.get('/download/rektor',controller.REKTOR);
+router.get('/download/science',controller.SCIENCE);
+router.get('/download/students',controller.STUDENTS);
+
 
 
 
