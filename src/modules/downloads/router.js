@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const  controller = require('./controller.js')
-
 router.get('/download/techkengash',controller.TECHNIZOM);
 router.get('/download/technizom',controller.TECHKENGASH);
 router.get('/download/atoqli',controller.ATOQLI);
@@ -10,8 +9,7 @@ router.get('/download/magister',controller.MAGISTER);
 router.get('/download/rektor',controller.REKTOR);
 router.get('/download/science',controller.SCIENCE);
 router.get('/download/students',controller.STUDENTS);
-
-
-
-
+router.get('/download/doc',controller.DOC);
+router.get('/download/shop',controller.SHOP);
+router.get('/download/reyting',controller.REYTING);
 module.exports = router
