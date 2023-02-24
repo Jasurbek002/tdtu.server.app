@@ -77,3 +77,17 @@ create table docs(
     special varchar(100) not null,
     job text not null
 );
+
+drop table if exists inno;
+create table inno(
+    inno_id serial primary key,
+    title text not null,
+    status varchar(20) default 'active'
+);
+
+drop table if exists innoimg;
+create table innoimg(
+    img_id serial primary key,
+    inno_id int references inno(inno_id),
+    img text not null
+);

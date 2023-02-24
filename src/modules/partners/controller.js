@@ -22,8 +22,6 @@ async function GET (req,res,next){
         return next(new InternalServerError(500,error.message))
     }
 }
-
-
 async function POST(req,res,next){
     try {
         let postData = await model.POST(req.body,req.file)

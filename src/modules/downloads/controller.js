@@ -74,6 +74,30 @@ async function STUDENTS(req,res,next){
         return next(new InternalServerError(500,error.message))
     }
 }
+async function DOC(req,res,next){
+    try { 
+        let file =path.join(process.cwd(),'src','pdfs','doc.pdf')
+        res.status(200).download(file)
+    } catch (error) {
+        return next(new InternalServerError(500,error.message))
+    }
+}
+async function SHOP(req,res,next){
+    try { 
+        let file =path.join(process.cwd(),'src','pdfs','shop.pdf')
+        res.status(200).download(file)
+    } catch (error) {
+        return next(new InternalServerError(500,error.message))
+    }
+}
+async function REYTING(req,res,next){
+    try { 
+        let file =path.join(process.cwd(),'src','pdfs','shop.pdf')
+        res.status(200).download(file)
+    } catch (error) {
+        return next(new InternalServerError(500,error.message))
+    }
+}
 module.exports = {
     TECHNIZOM,
     TECHKENGASH,
@@ -83,5 +107,8 @@ module.exports = {
     PREZDENT,
     ATOQLI,
     SCIENCE,
-    STUDENTS
+    STUDENTS,
+    DOC,
+    SHOP,
+    REYTING
 }

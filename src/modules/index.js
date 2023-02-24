@@ -6,6 +6,7 @@ const partnerRouter = require('./partners/router.js')
 const loyhaRouter = require('./loyha/router.js')
 const downloadRouter= require('./downloads/router.js')
 const doctorateRouter = require('./doctorate/router.js')
+const texnoRouter = require('./texnopark/router.js')
 
 module.exports = [
     adminRouter,
@@ -15,5 +16,6 @@ module.exports = [
     // spinRouter,
     loyhaRouter,
     downloadRouter,
-    doctorateRouter
+    doctorateRouter,
+    texnoRouter
 ];
