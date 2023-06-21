@@ -60,7 +60,7 @@ async function PUT(req,res,next) {
                 fs.unlinkSync(path.join('src','uploads',req.body.deleteImage))
                 res.status(200).json({
                     status:200,
-                    message:'image added!',
+                    message:'image deleted!',
                     data:deleteData
                 })
             }

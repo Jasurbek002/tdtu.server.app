@@ -91,6 +91,7 @@ async function SHOP(req,res,next){
     }
 }
 async function REYTING(req,res,next){
+    console.log('ok')
     try { 
         let file =path.join(process.cwd(),'src','pdfs','shop.pdf')
         res.status(200).download(file)

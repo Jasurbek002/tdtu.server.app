@@ -3,7 +3,7 @@ const { ForbiddinError, InternalServerError } = require('../utils/error.js')
 
 module.exports = (req,res,next) =>{
      try {
-        if(req.url ==='/login' || req.url ==='/register'){
+        if(req.url ==='/v1/login' || req.url ==='/v1/register'){
             return next()
         }
         if(req.method === 'get'){

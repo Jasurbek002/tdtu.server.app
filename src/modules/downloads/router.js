@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const  controller = require('./controller.js')
+
 router.get('/download/techkengash',controller.TECHNIZOM);
 router.get('/download/technizom',controller.TECHKENGASH);
 router.get('/download/atoqli',controller.ATOQLI);

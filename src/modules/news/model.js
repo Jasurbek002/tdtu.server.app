@@ -28,9 +28,9 @@ const GET = async () =>{
     }
 }
 
-const POST = async ({titleuz,titleen,textuz,texten},{filename}) =>{
+const POST = async ({titleuz,titleen,link},{filename}) =>{
     try {
-        let postData = await fetch(POSTDATA,filename,titleuz,titleen,textuz,texten)
+        let postData = await fetch(POSTDATA,filename,titleuz,titleen,link)
         if(postData){
             return postData
         }else{
@@ -41,7 +41,7 @@ const POST = async ({titleuz,titleen,textuz,texten},{filename}) =>{
     }
 }
 
-const PUT = async ({newsId},{titleuz,titleen,textuz,texten},{filename}) =>{
+const PUT = async ({newsId},{titleuz,titleen,link},{filename}) =>{
     try {
         let oldNews = await fetch(OLDDATA,newsId)
         
@@ -50,8 +50,7 @@ const PUT = async ({newsId},{titleuz,titleen,textuz,texten},{filename}) =>{
             filename ? filename : oldNews.image,
             titleuz ? titleuz : oldNews.title_uz,
             titleen ? titleen : oldNews.title_en,
-            textuz ? textuz : oldNews.text_uz,
-            texten ? texten : oldNews.text_en,
+            link ? link : oldNews.link,
             newsId)
         if(putNews){
             return putNews

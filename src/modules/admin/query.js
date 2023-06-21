@@ -1,15 +1,15 @@
 
 const GETLOGIN = `
 select a.* from admins as a 
-where adminname = $1 and password = crypt($2,a.password) 
+where adminname = $1 and password = $2
 `
 const GETREGISTER = `
 insert into admins(adminname,password)
-values ($1,crypt($2,gen_salt('bf'))) returning *
+values ($1,$2) returning *
 `
 
 const PUTADMIN = `
-update admins SET password = crypt($1,gen_salt('bf')) 
+update admins SET password = $1 
 where admin_id = $2 returning *
 `
 

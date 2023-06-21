@@ -11,9 +11,9 @@ async function GET(){
     }
 }
 
-async function POST({fullname,special,job}){
+async function POST({fullname,special,job,type}){
  try {
-    let postData = await fetch(POSTDATA,fullname,special,job)
+    let postData = await fetch(POSTDATA,fullname,special,job,type)
     if(postData){
         return postData
     }else{
@@ -24,13 +24,14 @@ async function POST({fullname,special,job}){
  }
 }
 
-async function PUT({fullname,special,job},{docId}){
+async function PUT({fullname,special,job,type},{docId}){
     try {
         let oldData = await fetch(OLDDATA,docId);
         let putData = await fetch(PUTDATA,
             fullname?fullname:oldData.full_name,
             special?special:oldData.special,
             job?job:oldData.job,
+            type?type:oldData.type,
             docId
             );
             if(putData){

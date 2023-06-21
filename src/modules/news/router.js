@@ -2,7 +2,6 @@ const router = require('express').Router()
 const controller = require('./controller.js')
 
 
-
 router.get('/news',controller.GET)
 router.get('/news/:newsId',controller.GET_ONE)
 router.post('/news/add',controller.uploadFile,controller.POST)

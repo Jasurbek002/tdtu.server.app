@@ -3,8 +3,8 @@ select * from news
 `
 
 const POSTDATA = `
-insert into news(image,title_uz,title_en,text_uz,text_en)
-values($1,$2,$3,$4,$5) returning *
+insert into news(image,title_uz,title_en,link)
+values($1,$2,$3,$4) returning *
 `
 
 const OLDDATA =`
@@ -16,8 +16,7 @@ update news SET
 image = $1 ,
 title_uz = $2,
 title_en = $3,
-text_uz = $4,
-text_en = $5
+link = $4,
 where new_id = $6
 returning *
 `

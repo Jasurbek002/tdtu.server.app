@@ -5,6 +5,7 @@ const { InternalServerError, ForbiddinError, NotFoundError } = require('../../ut
 
 
 const LOGIN =async (req,res,next) =>{
+    
     try {
         let admin = await model.LOGIN(req.body)
         if(admin){

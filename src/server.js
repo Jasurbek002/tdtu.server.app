@@ -3,15 +3,17 @@ const path = require('path')
 const fs = require('fs')
 const cors = require('cors')
 const appRouter = require('./modules/index.js')
-const checkToken = require('./middlewares/checkToken.js')
+
+
 
 const app = express()
-
-app.use(cors("*"))
-app.use(express.json())
-// app.use(checkToken)
 app.use(express.static(path.join(__dirname, './uploads')))
 app.use(express.static(path.join(__dirname, './pdfs')))
+
+const checkToken = require('./middlewares/checkToken.js')
+app.use(cors("*"))
+app.use(express.json())
+app.use(checkToken)
 
 app.use((req,res,next) =>{
     try {
@@ -23,6 +25,7 @@ app.use((req,res,next) =>{
     }
 })
 
-app.use(appRouter)
+app.use("/v1",appRouter)
 
-app.listen(process.env.PORT || 5000, () => console.log('server run'))
+module.exports = app
+

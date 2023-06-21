@@ -4,8 +4,8 @@
   "description": "this is oman application server sytems",
   "main": "index.js",
   "scripts": {
-    "start": "./src/server.js",
-    "dev": "nodemon ./src/server.js",
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Jasurbek002/oman.server.app#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
