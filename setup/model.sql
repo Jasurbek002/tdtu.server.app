@@ -53,7 +53,8 @@ drop table if exists economy;
 create table economy(
     econom_id serial primary key,
     name_uz text not null,
-    name_en text not null
+    name_en text not null,
+    department varchar(1000) not null
 );
 
 -- drop table if exists spin;

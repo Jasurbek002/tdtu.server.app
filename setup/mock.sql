@@ -19,3 +19,6 @@ values(
 
 update banners SET  image = 'banner-1673433395896-646917292.jpg'
  where banner_id = 3 returning *
+
+
+ insert into economy(name_uz,name_en,department) values('juda yaxshi loyiha','very good project','Mexanika fakuliteti');
