@@ -1,6 +1,4 @@
-create database tdtu_db;
 
-CREATE EXTENSION pgcrypto;   
 
 drop table if exists admins;
 create table admins(
@@ -30,12 +28,7 @@ create table news(
     link text not null
 ); 
 
--- drop table if exists partners;
--- create table partners(
---     partner_id serial primary key,
---     logo text,
---     link text
--- );
+
 
 drop table if exists loyha;
 create table loyha(
@@ -57,14 +50,6 @@ create table economy(
     department varchar(1000) not null
 );
 
--- drop table if exists spin;
--- create table spin(
---     spin_id serial primary key,
---     name_en varchar(100) not null,
---     text_uz text not null,
---     text_en text not null,
---     responsible varchar(100) not null
--- );
 
 
 drop table if exists docs;
@@ -76,16 +61,21 @@ create table docs(
     type varchar(30) not null
 );
 
--- drop table if exists inno;
--- create table inno(
---     inno_id serial primary key,
---     title text not null,
---     status varchar(20) default 'active'
--- );
+drop table if exists  loboratory;
+create table loboratory(
+    id serial primary key,
+    file text not null,
+    room_id int references rooms(room_id),
+    name_uz varchar not null,
+    name_en varchar,
+    name_ru varchar
+);
 
--- drop table if exists innoimg;
--- create table innoimg(
---     img_id serial primary key,
---     inno_id int references inno(inno_id),
---     img text not null
--- );
+drop table if exists rooms;
+create table rooms(
+    room_id serial primary key,
+    name_uz varchar not null,
+    name_en varchar,
+    name_ru varchar
+);
+

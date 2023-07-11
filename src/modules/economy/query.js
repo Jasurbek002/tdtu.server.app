@@ -13,7 +13,7 @@ where econom_id = $1
 `;
 
 const PUTDATA = `
-updated economy set
+update economy set
  name_uz = $1,
  name_en = $2,
  department = $3,
