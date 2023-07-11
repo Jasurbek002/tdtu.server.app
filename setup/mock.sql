@@ -1,6 +1,8 @@
 insert into admins(adminname,password,status) 
 values ('jasur','tdtumex','supperAdmin');
 
+
+
 insert into docs(full_name,special,job,type) 
 values (
 'Kamolov Ahmadjon Abduraximovich',
@@ -22,3 +24,7 @@ update banners SET  image = 'banner-1673433395896-646917292.jpg'
 
 
  insert into economy(name_uz,name_en,department) values('juda yaxshi loyiha','very good project','Mexanika fakuliteti');
+ 
+
+ insert into loyha(thema_uz,thema_en,author_uz,dedline,tip) 
+ values ('Suniy intetlekt','Ai inteligent','jasdev','10.20.2024','international');

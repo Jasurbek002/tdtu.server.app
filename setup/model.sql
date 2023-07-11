@@ -30,12 +30,12 @@ create table news(
     link text not null
 ); 
 
-drop table if exists partners;
-create table partners(
-    partner_id serial primary key,
-    logo text,
-    link text
-);
+-- drop table if exists partners;
+-- create table partners(
+--     partner_id serial primary key,
+--     logo text,
+--     link text
+-- );
 
 drop table if exists loyha;
 create table loyha(
@@ -76,16 +76,16 @@ create table docs(
     type varchar(30) not null
 );
 
-drop table if exists inno;
-create table inno(
-    inno_id serial primary key,
-    title text not null,
-    status varchar(20) default 'active'
-);
+-- drop table if exists inno;
+-- create table inno(
+--     inno_id serial primary key,
+--     title text not null,
+--     status varchar(20) default 'active'
+-- );
 
-drop table if exists innoimg;
-create table innoimg(
-    img_id serial primary key,
-    inno_id int references inno(inno_id),
-    img text not null
-);
+-- drop table if exists innoimg;
+-- create table innoimg(
+--     img_id serial primary key,
+--     inno_id int references inno(inno_id),
+--     img text not null
+-- );
