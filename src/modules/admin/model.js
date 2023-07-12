@@ -1,7 +1,17 @@
-const { GETLOGIN, GETREGISTER,PUTADMIN,GETDELETE} = require('./query.js')
-const { fetch } = require('./../../lib/postgres.js')
+const { GETLOGIN, GETREGISTER,PUTADMIN,GETDELETE,GET_ADMINS} = require('./query.js')
+const { fetch, fetchAll } = require('./../../lib/postgres.js')
 const { InternalServerError, ForbiddinError, NotFoundError } = require('../../utils/error.js')
 const { verify } = require('../../lib/jwt.js')
+
+async function GET({token}){
+    let { level } = verify(token)
+    if (level === 'supperAdmin') {
+        let newAdmin = await fetchAll(GET_ADMINS)
+        return newAdmin
+    } else {
+        return new ForbiddinError(403, 'you do not have permission to do so')
+    }
+}
 
 const LOGIN = async ({ adminname, password }) => {
     try {
@@ -14,11 +24,11 @@ const LOGIN = async ({ adminname, password }) => {
 
 
 
-async function REGISTER({ adminname, password }, { token }) {
+async function REGISTER({ adminname, password,role,status='admin' }, { token }) {
     try {
         let { level } = verify(token)
         if (level === 'supperAdmin') {
-            let newAdmin = await fetch(GETREGISTER, adminname, password)
+            let newAdmin = await fetch(GETREGISTER, adminname, password,status,role)
             delete newAdmin.password
             return newAdmin
         } else {
@@ -72,5 +82,6 @@ module.exports = {
     LOGIN,
     REGISTER,
     PUT,
-    DELETE
+    DELETE,
+    GET
 }

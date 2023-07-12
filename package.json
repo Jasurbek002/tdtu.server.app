@@ -1,7 +1,7 @@
 {
-  "name": "oman.server.app",
+  "name": "tdtu.server.app",
   "version": "1.0.0",
-  "description": "this is oman application server sytems",
+  "description": "this is application tdtu server sytems",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",

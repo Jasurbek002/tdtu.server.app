@@ -1,5 +1,5 @@
-insert into admins(adminname,password,status) 
-values ('jasur','tdtumex','supperAdmin');
+insert into admins(adminname,password,status,role) 
+values ('jasur','tdtumex','supperAdmin',0);
 
 
 

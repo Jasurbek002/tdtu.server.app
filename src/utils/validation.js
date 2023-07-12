@@ -7,7 +7,9 @@ const loginSchema = Joi.object({
 
 const registerSchema = Joi.object({
     adminname:Joi.string().required().min(3).max(50),
-    password:Joi.string().min(6).max(12).required()
+    password:Joi.string().min(6).max(12).required(),
+    status:Joi.string(),
+    role:Joi.string().max(1).required()
 })
 
 const editeSchema = Joi.object({

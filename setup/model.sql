@@ -6,6 +6,7 @@ create table admins(
     adminname varchar(50) not null unique,
     password varchar(60) not null,
     status varchar(20) default 'admin',
+    role int not null,
     created_at timestamp default CURRENT_TIMESTAMP
 );
 

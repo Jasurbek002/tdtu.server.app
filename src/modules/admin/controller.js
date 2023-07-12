@@ -2,7 +2,21 @@ const model = require('./model.js')
 const {sign} = require('./../../lib/jwt.js')
 const { InternalServerError, ForbiddinError, NotFoundError } = require('../../utils/error.js')
 
-
+async function GET(req,res,next){
+    console.log('ok');
+try {
+    let admin = await model.GET(req.headers)
+    if(admin){
+        res.status(200).json({
+            status:200,
+            message:'you were successful',
+           data:admin
+        })
+    }
+} catch (error) {
+    
+}
+}
 
 const LOGIN =async (req,res,next) =>{
     
@@ -12,7 +26,10 @@ const LOGIN =async (req,res,next) =>{
             res.status(200).json({
                 status:200,
                 message:'you were successful',
-                token:sign({level:admin.status,id:admin.admin_id})
+               data:{
+                token:sign({level:admin.status,id:admin.admin_id}),
+                role:admin.role
+               }
             })
         }else{
             res.status(401).json({
@@ -92,5 +109,6 @@ module.exports = {
   LOGIN,
   REGISTER,
   PUT,
-  DELETE
+  DELETE,
+  GET
 }

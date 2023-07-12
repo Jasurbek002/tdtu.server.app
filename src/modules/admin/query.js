@@ -1,11 +1,15 @@
 
+const GET_ADMINS =  `
+select * from admins
+`
+
 const GETLOGIN = `
 select a.* from admins as a 
 where adminname = $1 and password = $2
 `
 const GETREGISTER = `
-insert into admins(adminname,password)
-values ($1,$2) returning *
+insert into admins(adminname,password,status,role)
+values ($1,$2,$3,$4) returning *
 `
 
 const PUTADMIN = `
@@ -21,5 +25,6 @@ module.exports = {
     GETLOGIN,
     GETREGISTER,
     PUTADMIN,
-    GETDELETE
+    GETDELETE,
+    GET_ADMINS
 }
