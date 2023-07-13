@@ -20,7 +20,7 @@ async function GET_ROOMS() {
 }
 
 async function POST(
-  { nameUz, nameEn = "", nameRu = "", roomId },
+  { nameUz, nameEn = '', nameRu = '', roomId },
   { filename }
 ) {
   try {

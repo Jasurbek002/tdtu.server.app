@@ -14,7 +14,7 @@ values (
 
 insert into news(image,title_uz,title_en,link)
 values(
-    ',nsidodjdposakxl;sa.jpg',
+    'nsidodjdposakxl;sa.jpg',
     'juda yaxshi yangilik',
     'very good news',
     'https://www.jasdev.uz'

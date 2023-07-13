@@ -62,7 +62,7 @@ create table docs(
     type varchar(30) not null
 );
 
-drop table if exists  loboratory;
+drop table if exists loboratory;
 create table loboratory(
     id serial primary key,
     file text not null,
