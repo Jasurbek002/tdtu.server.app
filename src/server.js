@@ -9,11 +9,14 @@ const appRouter = require('./modules/index.js')
 const app = express()
 app.use(express.static(path.join(__dirname, './uploads')))
 app.use(express.static(path.join(__dirname, './pdfs')))
+app.use(express.static(path.join(__dirname, './pdf')))
 
-const checkToken = require('./middlewares/checkToken.js')
+
 app.use(cors("*"))
 app.use(express.json())
-// app.use(checkToken)
+
+const checkToken = require('./middlewares/checkToken.js')
+
 
 app.use((req,res,next) =>{
     try {
@@ -25,6 +28,7 @@ app.use((req,res,next) =>{
     }
 })
 
+// app.use(checkToken)
 app.use("/v1",appRouter)
 
 module.exports = app

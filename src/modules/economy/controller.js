@@ -19,7 +19,7 @@ async function GET(req, res, next) {
 
 async function POST(req,res,next){
     try {
-        let postData = await model.POST(res.body)
+        let postData = await model.POST(req.body)
         if(postData){
             res.status(201).json({
                 status:201,
