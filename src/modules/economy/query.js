@@ -16,8 +16,8 @@ const PUTDATA = `
 update economy set
  name_uz = $1,
  name_en = $2,
- department = $3,
- where economy_id = $3 returning * 
+ department = $3
+ where econom_id = $4 returning * 
 `;
 
 const DELETEDATA = `

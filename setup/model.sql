@@ -80,3 +80,27 @@ create table rooms(
     name_ru varchar
 );
 
+
+drop table if exists brm;
+create table brm(
+    brm_id serial primary key,
+    title_uz text,
+    title_en text,
+    text_uz text,
+    text_en text
+);
+
+drop table if exists brm_info;
+create table brm_info(
+    id serial primary key,
+    brm_id int references brm(brm_id),
+    subtitle_uz text,
+    subtitle_en text,
+    subtext_uz text,
+    subtext_en text
+);
+
+
+
+
+

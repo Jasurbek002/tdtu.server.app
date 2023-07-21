@@ -6,6 +6,7 @@ const downloadRouter = require("./downloads/router.js");
 const doctorateRouter = require("./doctorate/router.js");
 const loboratoryRouter = require("./loboratory/router.js");
 const economyRouter = require("./economy/router.js");
+const brmRouter = require("./brm/router.js");
 // const partnerRouter = require('./partners/router.js')
 // const spinRouter = require('./spin/router.js')
 
@@ -18,6 +19,7 @@ module.exports = [
   doctorateRouter,
   loboratoryRouter,
   economyRouter,
+  brmRouter,
   // partnerRouter,
   // spinRouter,
 ];
