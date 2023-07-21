@@ -62,6 +62,14 @@ create table docs(
     type varchar(30) not null
 );
 
+drop table if exists rooms;
+create table rooms(
+    room_id serial primary key,
+    name_uz varchar not null,
+    name_en varchar,
+    name_ru varchar
+);
+
 drop table if exists loboratory;
 create table loboratory(
     id serial primary key,
@@ -72,13 +80,7 @@ create table loboratory(
     name_ru varchar
 );
 
-drop table if exists rooms;
-create table rooms(
-    room_id serial primary key,
-    name_uz varchar not null,
-    name_en varchar,
-    name_ru varchar
-);
+
 
 
 drop table if exists brm;
