@@ -6,7 +6,7 @@ const pool = new Pool(pgConfig)
 async function fetch(Sql,...params){
     const cilent = await pool.connect()
     try {
-        const { rows:[row] } = await cilent.query(Sql , params.length ? params : null)
+        const {rows:[row]} = await cilent.query(Sql , params.length ? params : null)
        return row
     } catch (error) {
         console.log(error)

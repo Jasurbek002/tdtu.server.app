@@ -7,6 +7,10 @@ const {
   PUT_INFO_DATA,
   GET_INFO_ONE,
   GET_INFO_ALL,
+  CREATE_BRM_QUERY,
+  GET_ALL_BRM_QUERY,
+  GET_ONE_BRM_QUERY,
+  DELETE_BRM_QUERY,
 } = require("./query");
 
 async function GET({ brmId }) {
@@ -85,16 +89,64 @@ async function PUT_INFO(
 ) {
   try {
     const oldData = await fetch(GET_INFO_ONE, infoId);
-    console.log(brmId)
+    console.log(brmId);
     const data = await fetch(
       PUT_INFO_DATA,
       brmId ? oldData.brm_id : brmId,
-      subtitle_uz === ""  ? oldData.subtitle_uz : subtitle_uz,
+      subtitle_uz === "" ? oldData.subtitle_uz : subtitle_uz,
       subtitle_en === "" ? oldData.subtitle_en : subtitle_en,
-      subtext_uz === ""  ? oldData.subtext_uz : subtext_uz,
-      subtext_en === ""  ? oldData.subtext_en : subtext_en,
+      subtext_uz === "" ? oldData.subtext_uz : subtext_uz,
+      subtext_en === "" ? oldData.subtext_en : subtext_en,
       infoId
     );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function CREATE_BRM(
+  { title_uz, title_en, text_uz, text_en, category },
+  { filename }
+) {
+  console.log(category);
+  try {
+    const data = await fetch(
+      CREATE_BRM_QUERY,
+      title_uz,
+      title_en,
+      text_uz,
+      text_en,
+      filename,
+      category === "0" ? "action" : "policies"
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function GET_ALL_BRM() {
+  try {
+    const data = await fetchAll(GET_ALL_BRM_QUERY);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function GET_ONE_BRM({ brmId }) {
+  try {
+    const data = await fetch(GET_ONE_BRM_QUERY, brmId);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function DELETE_BRM({ brmId }) {
+  try {
+    const data = await fetch(DELETE_BRM_QUERY, brmId);
     return data;
   } catch (error) {
     throw error;
@@ -108,4 +160,8 @@ module.exports = {
   GET_ALL_INFO,
   PUT_INFO,
   POST_INFO,
+  CREATE_BRM,
+  DELETE_BRM,
+  GET_ALL_BRM,
+  GET_ONE_BRM,
 };

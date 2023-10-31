@@ -10,7 +10,7 @@ const pgConfig = {
     database:process.env.PG_DATABASE
 }
 
-module.exports ={
+module.exports = {
     pgConfig,
     secretkey
 }

@@ -81,15 +81,15 @@ create table loboratory(
 );
 
 
-
-
-drop table if exists brm;
-create table brm(
+drop table if exists brm_section;
+create table brm_section(
     brm_id serial primary key,
-    title_uz text,
-    title_en text,
-    text_uz text,
-    text_en text
+    brm_image text not null,
+    title_uz text not null,
+    title_en text not null,
+    text_uz text not null,
+    text_en text not null,
+    category varchar not null
 );
 
 drop table if exists brm_info;

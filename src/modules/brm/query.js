@@ -43,6 +43,21 @@ where id = $6
 returning *
 `;
 
+const CREATE_BRM_QUERY = `
+insert into brm_section(title_uz,title_en,text_uz,text_en,brm_image,category) values($1,$2,$3,$4,$5,$6)  returning *
+`;
+
+const GET_ALL_BRM_QUERY = `
+select * from brm_section`;
+
+const GET_ONE_BRM_QUERY = `
+select * from brm_section where brm_id = $1
+`;
+
+const DELETE_BRM_QUERY = `
+delete from brm_section where brm_id = $1 returning *
+`;
+
 module.exports = {
   GET_DATA,
   POST_DATA,
@@ -51,4 +66,8 @@ module.exports = {
   PUT_INFO_DATA,
   GET_INFO_ALL,
   GET_INFO_ONE,
+  CREATE_BRM_QUERY,
+  GET_ALL_BRM_QUERY,
+  GET_ONE_BRM_QUERY,
+  DELETE_BRM_QUERY
 };
