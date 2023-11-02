@@ -9,6 +9,7 @@ router.put("/brm/info/edit/:infoId", controller.PUT_INFO);
 
 router.post("/brm/create/data", controller.fileUpload, controller.brm_create);
 router.get("/brm/data/all", controller.brm_get_all);
+router.delete("/brm/data/:brmId", controller.brm_delete);
 router.get("/brm/data/:brmId", controller.brm_get_one);
-router.delete("/brm/data/remove/:brmId", controller.brm_delete);
+
 module.exports = router;

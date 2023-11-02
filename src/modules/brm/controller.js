@@ -2,6 +2,8 @@ const { InternalServerError, MyError } = require("../../utils/error");
 const model = require("./model.js");
 const multer = require("./../../lib/multer.js");
 const fileUpload = multer.single("brm_image");
+const fs = require('fs')
+const path = require('path')
 async function GET(req, res, next) {
   try {
     const data = await model.GET(req.params);
@@ -95,7 +97,6 @@ async function PUT_INFO(req, res, next) {
 async function brm_create(req, res, next) {
   try {
     const data = await model.CREATE_BRM(req.body, req.file);
-    console.log(req.file)
     if (data) {
       res.status(201).json({
         status: 201,
@@ -142,6 +143,7 @@ async function brm_delete(req, res, next) {
   try {
     const data = await model.DELETE_BRM(req.params);
     if (data) {
+      fs.unlinkSync(path.join('src','uploads',data.brm_image))
       res.status(200).json({
         status: 200,
         message: "Successfuly deleted data!",

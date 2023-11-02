@@ -109,7 +109,7 @@ async function CREATE_BRM(
   { title_uz, title_en, text_uz, text_en, category },
   { filename }
 ) {
-  console.log(category);
+
   try {
     const data = await fetch(
       CREATE_BRM_QUERY,

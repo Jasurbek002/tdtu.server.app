@@ -57,7 +57,7 @@ async function PUT(req,res,next) {
         try {
             let deleteData = await model.DELETE(req.params)
             if(deleteData){
-                fs.unlinkSync(path.join('src','uploads',req.body.deleteImage))
+                fs.unlinkSync(path.join(process.cwd(),'src','uploads',req.body.deleteImage))
                 res.status(200).json({
                     status:200,
                     message:'image deleted!',
