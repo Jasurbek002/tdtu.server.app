@@ -1,7 +1,9 @@
 const {Pool} = require('pg')
 
 const {pgConfig,secretkey} = require('../config')
-const pool = new Pool(pgConfig)
+const pool = new Pool({
+    connectionString:"postgres://geogakea:g8lBqhLRk4qrGKbC2STeTFzwQHIvaTdg@rain.db.elephantsql.com/geogakea"
+})
 
 async function fetch(Sql,...params){
     const cilent = await pool.connect()

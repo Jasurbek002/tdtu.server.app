@@ -97,6 +97,7 @@ async function PUT_INFO(req, res, next) {
 async function brm_create(req, res, next) {
   try {
     const data = await model.CREATE_BRM(req.body, req.file);
+    console.log(data)
     if (data) {
       res.status(201).json({
         status: 201,
@@ -105,6 +106,7 @@ async function brm_create(req, res, next) {
       });
     }
   } catch (error) {
+    console.log(error)
     return next(new MyError(error.status, error.message));
   }
 }
