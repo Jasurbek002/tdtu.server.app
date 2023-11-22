@@ -5,7 +5,9 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     if (file.mimetype === "application/pdf") {
       cb(null, path.join(__dirname, "../pdf"));
-    } else cb(null, path.join(__dirname, "../uploads"));
+    }else if(file.mimetype === "video/mp4"){
+      cb(null, path.join(__dirname, "../videos"))
+    } else  cb(null, path.join(__dirname, "../uploads"));
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

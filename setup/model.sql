@@ -102,6 +102,15 @@ create table brm_info(
     subtext_en text
 );
 
+drop table if exists media;
+create table media(
+   media_id serial primary key,
+   media text,
+   title_uz varchar(200),
+   title_en varchar(200)
+);
+
+
 
 
 
