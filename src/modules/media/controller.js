@@ -8,7 +8,7 @@ const path = require("path");
 async function media_create(req, res, next) {
   try {
     console.log(req.file)
-    const data = await model.MEDIA_CREATE(req.body, req.file);
+    const data = await model.CREATE_MEDIA(req.body, req.file);
     console.log(data);
     if (data) {
       res.status(201).json({
