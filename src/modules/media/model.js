@@ -18,7 +18,7 @@ async function CREATE_MEDIA({ title_uz, title_en }, { filename }) {
 
 async function GET_ALL_MEDIA() {
   try {
-    const data = await fetch(GET_ALL_MEDIA_QUERY);
+    const data = await fetchAll(GET_ALL_MEDIA_QUERY);
     return data;
   } catch (error) {
     console.error(error);
@@ -34,9 +34,9 @@ async function GET_ONE_MEDIA({ media_id }) {
   }
 }
 
-async function DELETE_MEDIA({ media_id }) {
+async function DELETE_MEDIA({ mediaId }) {
   try {
-    const data = await fetch(DELETE_MEDIA_QUERY, media_id);
+    const data = await fetch(DELETE_MEDIA_QUERY, mediaId);
     return data;
   } catch (error) {
     console.error(error);

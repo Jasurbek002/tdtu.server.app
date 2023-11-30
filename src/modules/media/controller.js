@@ -7,9 +7,9 @@ const path = require("path");
 
 async function media_create(req, res, next) {
   try {
-    console.log(req.file)
+    console.log(req.file);
     const data = await model.CREATE_MEDIA(req.body, req.file);
-    console.log(data);
+    console.log("res", data);
     if (data) {
       res.status(201).json({
         status: 201,
@@ -23,53 +23,39 @@ async function media_create(req, res, next) {
   }
 }
 
-async function brm_get_all(req, res, next) {
+async function getAllMedia(req,res) {
   try {
-    const data = await model.GET_ALL_BRM();
+    const data = await model.GET_ALL_MEDIA();
     if (data) {
-      res.status(200).json({
-        status: 200,
-        message: "Successfuly come to data!",
+      res.status(201).json({
+        status: 201,
+        message: "Successfuly get all!",
         data: data,
       });
     }
   } catch (error) {
-    return next(new MyError(error.status, error.message));
+    console.log(error);
   }
 }
 
-async function brm_get_one(req, res, next) {
+async function deleteMedia(req,res){
   try {
-    const data = await model.GET_ONE_BRM(req.params);
+    const data = await model.DELETE_MEDIA(req.params);
     if (data) {
-      res.status(200).json({
-        status: 200,
-        message: "Successfuly come to data!",
+      res.status(201).json({
+        status: 201,
+        message: "Successfuly deleted!",
         data: data,
       });
     }
   } catch (error) {
-    return next(new MyError(error.status, error.message));
-  }
-}
-
-async function brm_delete(req, res, next) {
-  try {
-    const data = await model.DELETE_BRM(req.params);
-    if (data) {
-      fs.unlinkSync(path.join("src", "uploads", data.brm_image));
-      res.status(200).json({
-        status: 200,
-        message: "Successfuly deleted data!",
-        data: data,
-      });
-    }
-  } catch (error) {
-    return next(new MyError(error.status, error.message));
+    console.log(error);
   }
 }
 
 module.exports = {
   fileUpload,
   media_create,
+  getAllMedia,
+  deleteMedia
 };

@@ -7,6 +7,7 @@ const appRouter = require('./modules/index.js')
 
 
 const app = express()
+app.use(express.static(path.join(__dirname, './videos')))
 app.use(express.static(path.join(__dirname, './uploads')))
 app.use(express.static(path.join(__dirname, './pdfs')))
 app.use(express.static(path.join(__dirname, './pdf')))
