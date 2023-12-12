@@ -56,7 +56,8 @@ async function PUT({ nameuz, nameen, department }, { ecoId }) {
 
 async function DELETE({ ecoId }) {
   try {
-    let getData = await fetch(DELETEDATA, ecoId);
+    let getData = await fetch(DELETEDATA,ecoId);
+    console.log(getData,ecoId)
     if (getData) {
       return getData;
     } else {

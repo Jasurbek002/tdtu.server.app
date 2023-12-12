@@ -21,13 +21,14 @@ update economy set
 `;
 
 const DELETEDATA = `
-delete from economy where economy_id = $1
+delete from economy where econom_id = $1 
+returning *
 `;
 
 module.exports = {
-  GETDATA,
-  POSTDATA,
-  OLDDATA,
-  PUTDATA,
-  DELETEDATA,
+	GETDATA,
+	POSTDATA,
+	OLDDATA,
+	PUTDATA,
+	DELETEDATA,
 };

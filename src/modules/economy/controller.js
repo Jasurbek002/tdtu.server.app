@@ -57,7 +57,7 @@ async function DELETE(req,res,next){
             })
         }
     } catch (error) {
-        return next(new InternalServerError(500,error.message))
+        return next(new InternalServerError(400,error.message))
     }
 }
 module.exports ={
